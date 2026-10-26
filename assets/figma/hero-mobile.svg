@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="350" height="175" viewBox="0 0 350 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Canasta ilustrada m&#195;&#179;vil">
+<rect width="350" height="175" rx="14" fill="#F9DFBD"/>
+<ellipse id="Fondo" cx="185" cy="115" rx="115" ry="50" fill="#E9F1DB"/>
+<rect id="Canasta" x="95" y="77" width="170" height="85" rx="14" fill="#194734"/>
+<rect id="Borde" x="82" y="70" width="196" height="24" rx="10" fill="#113929"/>
+<circle id="Naranja" cx="138" cy="66" r="23" fill="#F39A45"/>
+<circle id="Tomate" cx="187.5" cy="56.5" r="25.5" fill="#E96354"/>
+<rect id="Leche" x="218" y="38" width="35" height="44" rx="4" fill="white"/>
+</g>
+</svg>

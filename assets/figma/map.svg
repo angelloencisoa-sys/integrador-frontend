@@ -1,0 +1,15 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="510" height="220" viewBox="0 0 510 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Mapa referencial editable">
+<g clip-path="url(#clip0_0_4)">
+<rect width="510" height="220" rx="16" fill="#E9E4D9"/>
+<rect id="Calle horizontal" y="94" width="510" height="32" fill="white"/>
+<rect id="Calle vertical" x="226" width="34" height="220" fill="white"/>
+<circle id="Marcador" cx="251.5" cy="87.5" r="13.5" fill="#F26A3B"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_4">
+<rect width="510" height="220" rx="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>

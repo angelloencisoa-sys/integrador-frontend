@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>La Bodega · Cerca de ti</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explora los productos de Comercial Nova, arma tu carrito y prepara tu compra para recojo en tienda.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+  <div id="app" class="app-root">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <div id="topbar" class="topbar">Tu compra del día, ahora también en línea · Recojo en tienda</div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" data-nav>
+          <strong>la bodega.</strong>
+          <span>CERCA DE TI</span>
+        </a>
+        <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+          <a id="nav-home" href="/" data-nav>Inicio</a>
+          <a id="nav-productos" href="/productos" data-nav>Productos</a>
+          <a id="nav-categorias" href="/#categorias" data-nav>Categorías</a>
+          <a id="nav-nosotros" class="desktop-link" href="/#nosotros" data-nav>Nosotros</a>
+          <div id="mobile-account" class="mobile-account"></div>
+        </nav>
+        <form id="site-search" class="site-search" role="search">
+          <input id="global-search-input" type="search" placeholder="⌕ ¿Qué necesitas hoy?" aria-label="Buscar en la tienda">
+          <button type="submit" class="visually-hidden">Buscar</button>
+        </form>
+        <button id="mobile-search-btn" class="mobile-search-button" type="button" aria-label="Abrir buscador">⌕</button>
+        <div id="desktop-account" class="desktop-account"></div>
+        <a id="cart-link" class="cart-link" href="/carrito" data-nav>
+          <span id="desktop-cart-text" class="desktop-cart">Mi carrito · 0</span>
+          <span id="mobile-cart-text" class="mobile-cart">Bolsa 0</span>
+        </a>
+        <button id="menu-btn" class="menu-button" type="button" aria-expanded="false" aria-label="Abrir menú">☰</button>
+      </div>
+    </header>
+    <main id="contenido" tabindex="-1"></main>
+    <footer id="site-footer" class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <a href="/" data-nav>la bodega.</a>
+          <p>Tu tienda de productos cotidianos, ahora con compras en línea.</p>
+          <small>Comercial Nova · Recojo en tienda</small>
+        </div>
+        <div class="footer-column">
+          <h3>EXPLORA</h3>
+          <a href="/" data-nav>Inicio</a>
+          <a href="/productos" data-nav>Productos</a>
+          <a href="/carrito" data-nav>Carrito</a>
+        </div>
+        <div class="footer-column">
+          <h3>INFORMACIÓN</h3>
+          <a href="/#nosotros" data-nav>Nosotros</a>
+          <span>Recojo en tienda</span>
+        </div>
+        <div class="footer-column">
+          <h3>CONTACTO</h3>
+          <span>Dirección y horarios por confirmar</span>
+        </div>
+      </div>
+    </footer>
+    <div id="toast" class="toast" role="status" hidden>
+      <span id="toast-text"></span>
+      <button id="toast-close" type="button" aria-label="Cerrar aviso">×</button>
+    </div>
+  </div>
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

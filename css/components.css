@@ -1,0 +1,366 @@
+/* Product Art */
+.product-art {
+  display: block;
+  height: 210px;
+}
+
+.visual {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff1c7;
+}
+
+.visual--oil {
+  background: #ffe8db;
+}
+
+.visual--milk,
+.visual--water {
+  background: #e6f1f5;
+}
+
+.visual--cookie {
+  background: #efe8f6;
+}
+
+.object {
+  width: 260px;
+  height: 210px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.object > div,
+.object > span,
+.object > img {
+  position: absolute;
+}
+
+.object > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #194734;
+  overflow: hidden;
+  text-align: center;
+}
+
+.shadow {
+  background: #d8d7c9;
+  border-radius: 4px;
+}
+
+.rice-shadow {
+  left: 81px;
+  top: 169px;
+  width: 104px;
+  height: 8px;
+}
+
+.rice-bag {
+  left: 87px;
+  top: 41px;
+  width: 86px;
+  height: 130px;
+  background: #f1e1bc;
+  border-radius: 14px;
+}
+
+.rice-seal {
+  left: 100px;
+  top: 35px;
+  width: 60px;
+  height: 10px;
+  background: #d9c695;
+  border-radius: 4px;
+}
+
+.rice-label {
+  left: 96px;
+  top: 91px;
+  width: 68px;
+  height: 44px;
+  background: white;
+  border-radius: 7px;
+  font-size: 12px;
+}
+
+.object > .original-rice {
+  font-size: 16px;
+}
+
+.oil-shadow {
+  left: 95px;
+  top: 173px;
+  width: 72px;
+  height: 7px;
+}
+
+.oil-bottle {
+  left: 100px;
+  top: 47px;
+  width: 60px;
+  height: 128px;
+  border-radius: 18px;
+  background: #f6d56a;
+}
+
+.oil-neck {
+  left: 112px;
+  top: 27px;
+  width: 36px;
+  height: 24px;
+  background: #e9b448;
+  border-radius: 6px;
+}
+
+.oil-cap {
+  left: 110px;
+  top: 19px;
+  width: 40px;
+  height: 11px;
+  background: #194734;
+  border-radius: 3px;
+}
+
+.oil-label {
+  left: 102px;
+  top: 98px;
+  width: 56px;
+  height: 44px;
+  background: #fff;
+  border-radius: 5px;
+  font-size: 10px;
+}
+
+.milk-shadow {
+  left: 87px;
+  top: 171px;
+  width: 90px;
+  height: 7px;
+}
+
+.milk-box {
+  left: 94px;
+  top: 45px;
+  width: 72px;
+  height: 127px;
+  background: #fff;
+  border-radius: 7px;
+}
+
+.milk-cap {
+  left: 121px;
+  top: 38px;
+  width: 18px;
+  height: 10px;
+  background: #4476ab;
+  border-radius: 3px;
+}
+
+.object > .milk-label {
+  left: 94px;
+  top: 93px;
+  width: 72px;
+  height: 38px;
+  background: #68a0d2;
+  color: #fff;
+  font-size: 12px;
+}
+
+.cookie-pack {
+  left: 77px;
+  top: 61px;
+  width: 106px;
+  height: 92px;
+  background: #506ba3;
+  border-radius: 13px;
+}
+
+.object > .cookie-label {
+  left: 92px;
+  top: 69px;
+  color: white;
+  font-size: 10px;
+}
+
+.cookie {
+  left: 103px;
+  top: 87px;
+}
+
+.water-bottle {
+  left: 105px;
+  top: 48px;
+  width: 50px;
+  height: 126px;
+  background: #b4dfef;
+  border-radius: 16px;
+}
+
+.water-cap {
+  left: 115px;
+  top: 36px;
+  width: 30px;
+  height: 14px;
+  border-radius: 4px;
+  background: #389cc0;
+}
+
+.water-label {
+  left: 106px;
+  top: 106px;
+  width: 48px;
+  height: 34px;
+  background: #fff;
+  font-size: 10px;
+}
+
+/* Product Card */
+.product-card-host {
+  display: block;
+  min-width: 0;
+}
+
+.product-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: white;
+  overflow: hidden;
+  height: 100%;
+  transition: box-shadow 0.15s;
+}
+
+.product-card:hover {
+  box-shadow: 0 5px 20px #1947340d;
+}
+
+.product-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-height: 173px;
+}
+
+.product-info .eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--orange);
+  text-transform: uppercase;
+}
+
+.product-name {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+  min-height: 21px;
+  color: var(--ink);
+}
+
+.product-info .price {
+  font-size: 18px;
+  color: var(--green);
+}
+
+.product-info small {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.add-button {
+  background: var(--sage);
+  color: var(--green);
+  border: 0;
+  border-radius: 9px;
+  min-height: 35px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: auto;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background: #d5e6d4;
+}
+
+.add-button:disabled {
+  background: #f2f1ed;
+  color: #69756e;
+  cursor: default;
+}
+
+@media (max-width: 600px) {
+  .product-card .product-art {
+    height: 154px;
+  }
+  .product-info {
+    padding: 10px;
+    min-height: 150px;
+    gap: 7px;
+  }
+  .product-name {
+    font-size: 12px;
+    min-height: 32px;
+  }
+  .product-info .price {
+    font-size: 15px;
+  }
+  .product-info .eyebrow {
+    font-size: 9px;
+  }
+  .add-button {
+    font-size: 11px;
+    min-height: 34px;
+  }
+}
+
+/* Quantity Control */
+.quantity-host {
+  display: inline-block;
+}
+
+.quantity {
+  display: flex;
+  background: var(--cream);
+  border-radius: 10px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.quantity button {
+  border: 0;
+  background: transparent;
+  color: var(--green);
+  width: 42px;
+  height: 44px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.quantity button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.quantity input {
+  width: 48px;
+  text-align: center;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  min-height: 44px;
+  font-weight: 700;
+  color: var(--green);
+  appearance: textfield;
+}
+
+.quantity input::-webkit-inner-spin-button,
+.quantity input::-webkit-outer-spin-button {
+  appearance: none;
+}

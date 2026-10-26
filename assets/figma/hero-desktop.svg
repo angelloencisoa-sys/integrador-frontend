@@ -1,0 +1,19 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="620" height="390" viewBox="0 0 620 390" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Ilustraci&#195;&#179;n de compra de barrio">
+<rect width="620" height="390" rx="26" fill="#F9DFBD"/>
+<circle id="Sol" cx="452.5" cy="122.5" r="102.5" fill="#FCEBCF"/>
+<ellipse id="Fondo verde" cx="290" cy="275" rx="250" ry="105" fill="#E9F1DB"/>
+<rect id="Canasta" x="130" y="170" width="360" height="165" rx="26" fill="#194734"/>
+<rect id="Borde canasta" x="110" y="160" width="400" height="38" rx="16" fill="#113929"/>
+<rect id="Asa izquierda" x="170" y="95" width="20" height="85" rx="10" fill="#113929"/>
+<rect id="Asa derecha" x="430" y="95" width="20" height="85" rx="10" fill="#113929"/>
+<circle id="Naranja" cx="202.5" cy="162.5" r="42.5" fill="#F39A45"/>
+<circle id="Tomate" cx="286" cy="146" r="46" fill="#E96354"/>
+<ellipse id="Hoja" cx="284" cy="103.5" rx="17" ry="11.5" fill="#4F8E4C"/>
+<rect id="Caja de leche" x="340" y="97" width="62" height="86" rx="5" fill="white"/>
+<rect id="Etiqueta leche" x="340" y="133" width="62" height="28" fill="#79ADCF"/>
+<rect id="Pan" x="410" y="112" width="80" height="70" rx="24" fill="#DFA75B"/>
+<rect id="Franja canasta" x="145" y="215" width="330" height="12" rx="5" fill="#286C4D"/>
+<rect id="Franja canasta 2" x="145" y="266" width="330" height="12" rx="5" fill="#286C4D"/>
+</g>
+</svg>

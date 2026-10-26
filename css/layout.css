@@ -1,0 +1,410 @@
+.app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+main {
+  flex: 1;
+}
+
+main:focus {
+  outline: none;
+}
+
+.topbar {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green);
+  color: white;
+  font-size: 11px;
+}
+
+.topbar[hidden] {
+  display: none !important;
+}
+
+.site-header {
+  background: #fff;
+  position: relative;
+  z-index: 5;
+}
+
+.header-inner {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  min-height: 88px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-width: 155px;
+}
+
+.brand strong {
+  font-size: 25px;
+  color: var(--green);
+  line-height: 34px;
+  letter-spacing: -0.5px;
+}
+
+.brand > span {
+  color: var(--orange);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.main-nav > a.active {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.site-search {
+  margin-left: auto;
+  width: 220px;
+  min-width: 140px;
+}
+
+.site-search input {
+  background: var(--cream);
+  width: 100%;
+  font-size: 12px;
+  min-height: 42px;
+}
+
+.desktop-account {
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90px;
+  white-space: nowrap;
+}
+
+.desktop-account button {
+  border: 0;
+  background: transparent;
+  color: var(--orange);
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.cart-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--orange);
+  color: #fff;
+  min-width: 150px;
+  min-height: 42px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.mobile-cart,
+.menu-button,
+.mobile-search-button,
+.mobile-account {
+  display: none;
+}
+
+.site-footer {
+  background: #113929;
+  color: white;
+  min-height: 250px;
+  padding: 40px 0;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1fr;
+  gap: 48px;
+}
+
+.footer-brand > a {
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.footer-brand p {
+  font-size: 12px;
+  color: #c7dcd0;
+  max-width: 420px;
+  line-height: 1.6;
+  margin: 15px 0;
+}
+
+.footer-brand small {
+  font-size: 11px;
+  color: #a9c6b4;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 12px;
+  color: #c7dcd0;
+}
+
+.footer-column h3 {
+  font-size: 11px;
+  color: #fff;
+  margin: 0 0 8px;
+}
+
+.site-footer.compact {
+  min-height: 150px;
+  padding: 34px 0;
+}
+
+.site-footer.compact .footer-inner {
+  display: flex;
+  align-items: flex-start;
+}
+
+.site-footer.compact .footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.site-footer.compact .footer-brand > a {
+  font-size: 25px;
+}
+
+.site-footer.compact .footer-brand p {
+  margin: 0;
+}
+
+.site-footer.compact .footer-brand small,
+.site-footer.compact .footer-column {
+  display: none;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: calc(100vw - 32px);
+  background: var(--green);
+  color: white;
+  box-shadow: 0 6px 28px #0002;
+  z-index: 20;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 15px 18px;
+  font-size: 13px;
+}
+
+.toast[hidden] {
+  display: none !important;
+}
+
+.toast button {
+  color: white;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 22px;
+  min-width: 24px;
+}
+
+@media (max-width: 1200px) {
+  .header-inner {
+    gap: 18px;
+  }
+  .brand {
+    min-width: 135px;
+  }
+  .main-nav {
+    gap: 18px;
+  }
+  .cart-link {
+    min-width: 125px;
+  }
+  .site-search {
+    width: 185px;
+  }
+  .footer-inner {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .main-nav {
+    gap: 14px;
+    font-size: 12px;
+  }
+  .brand {
+    min-width: 125px;
+  }
+  .desktop-account {
+    display: none;
+  }
+  .site-search {
+    width: 170px;
+  }
+  .header-inner {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 750px) {
+  .desktop-link {
+    display: none;
+  }
+  .site-search {
+    width: 150px;
+  }
+  .brand {
+    min-width: 115px;
+  }
+  .brand strong {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    display: none;
+  }
+  .header-inner {
+    min-height: 68px;
+    gap: 12px;
+  }
+  .brand {
+    margin-right: auto;
+    min-width: 0;
+  }
+  .brand strong {
+    font-size: 21px;
+    line-height: 29px;
+  }
+  .brand > span {
+    display: none;
+  }
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 12px 20px #0001;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+  .main-nav.open {
+    display: flex;
+  }
+  .main-nav > a {
+    font-size: 14px;
+  }
+  .main-nav .desktop-link {
+    display: none;
+  }
+  .mobile-account {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+  }
+  .site-search {
+    display: none;
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    top: 68px;
+    width: auto;
+    box-shadow: 0 8px 16px #0001;
+    background: #fff;
+    padding: 12px;
+    margin: 0;
+  }
+  .site-search.expanded {
+    display: block;
+  }
+  .mobile-search-button,
+  .menu-button {
+    display: block;
+    border: 0;
+    background: transparent;
+    color: var(--green);
+    font-size: 23px;
+    cursor: pointer;
+    min-width: 32px;
+    height: 40px;
+  }
+  .menu-button {
+    font-size: 20px;
+  }
+  .desktop-cart {
+    display: none;
+  }
+  .mobile-cart {
+    display: inline;
+  }
+  .cart-link {
+    background: transparent;
+    color: var(--orange);
+    min-width: 0;
+    min-height: 40px;
+    font-size: 12px;
+  }
+  .site-footer,
+  .site-footer.compact {
+    min-height: 160px;
+    padding: 20px 0;
+  }
+  .footer-inner,
+  .site-footer.compact .footer-inner {
+    display: block;
+  }
+  .footer-brand > a,
+  .site-footer.compact .footer-brand > a {
+    font-size: 22px;
+  }
+  .footer-brand p,
+  .site-footer.compact .footer-brand p {
+    font-size: 12px;
+    max-width: 350px;
+    margin: 12px 0;
+  }
+  .footer-brand small {
+    font-size: 10px;
+  }
+  .footer-column {
+    display: none;
+  }
+  .site-footer.compact .footer-brand {
+    display: block;
+  }
+  .toast {
+    width: calc(100vw - 32px);
+    font-size: 12px;
+    bottom: 12px;
+    gap: 12px;
+  }
+}
