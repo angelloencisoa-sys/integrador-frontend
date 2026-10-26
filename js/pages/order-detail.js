@@ -4,6 +4,7 @@ import { CONFIG } from '../config.js';
 import { ordersApi, orderStatus } from '../core/orders.api.js';
 import { cartStore } from '../core/cart.store.js';
 import { catalogStore } from '../core/catalog.store.js';
+import { createStoreMapLink } from '../shared/store-info.js';
 
 /**
  * Renderiza el detalle, seguimiento en vivo (polling cada 5 s), subida de comprobante,
@@ -329,7 +330,8 @@ export function mountOrderDetailPage(container, { params }) {
       leftPanel.append(
         el('p', { className: 'pickup-code', text: p.codigoRecojo }),
         el('p', { text: p.direccion }),
-        el('p', { text: p.horario })
+        el('p', { text: p.horario }),
+        createStoreMapLink(undefined, 'Ubicación actual de la bodega · Google Maps')
       );
     }
 

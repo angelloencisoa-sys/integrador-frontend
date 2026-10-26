@@ -197,6 +197,12 @@ main:focus {
   display: none;
 }
 
+.site-footer.compact .footer-contact {
+  display: flex;
+  margin-left: auto;
+  max-width: 300px;
+}
+
 .toast {
   position: fixed;
   bottom: 20px;
@@ -397,6 +403,12 @@ main:focus {
   }
   .footer-column {
     display: none;
+  }
+  .footer-contact,
+  .site-footer.compact .footer-contact {
+    display: flex;
+    margin: 20px 0 0;
+    max-width: 100%;
   }
   .site-footer.compact .footer-brand {
     display: block;

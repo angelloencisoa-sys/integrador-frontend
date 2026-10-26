@@ -1,4 +1,5 @@
 import { el } from './dom.js';
+import { getProductImage } from './product-images.js';
 
 /**
  * Clasifica el tipo de ilustración del producto según su nombre.
@@ -29,12 +30,32 @@ export function getProductArtLabel(product) {
 }
 
 /**
- * Crea el nodo DOM para la ilustración referencial de un producto (`<div class="product-art">`).
+ * Muestra la fotografía local o una ilustración de respaldo del producto.
  * @param {any} product
  * @param {boolean} [catalogAsset=false]
  * @returns {HTMLElement}
  */
 export function createProductArt(product, catalogAsset = false) {
+  const imageSrc = getProductImage(product);
+  if (imageSrc) {
+    const container = el('div', { className: 'product-art product-art--photo' });
+    const photo = el('img', {
+      src: imageSrc,
+      alt: product.nombre || 'Producto',
+      className: 'product-photo',
+      width: '800',
+      height: '800',
+      loading: catalogAsset ? 'lazy' : 'eager',
+      decoding: 'async',
+      onError: () => container.replaceWith(createProductIllustration(product, catalogAsset))
+    });
+    container.append(photo);
+    return container;
+  }
+  return createProductIllustration(product, catalogAsset);
+}
+
+function createProductIllustration(product, catalogAsset) {
   const kind = getProductArtKind(product);
   const objectContainer = el('div', { className: 'object' });
 

@@ -30,6 +30,7 @@ class SpaAndProxyHandler(SimpleHTTPRequestHandler):
         '.json': 'application/json; charset=utf-8',
         '.svg': 'image/svg+xml',
         '.ico': 'image/x-icon',
+        '.webp': 'image/webp',
         '.woff2': 'font/woff2',
     }
 

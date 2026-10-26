@@ -2,6 +2,7 @@ import { el, clearElement } from '../shared/dom.js';
 import { catalogStore } from '../core/catalog.store.js';
 import { cartStore } from '../core/cart.store.js';
 import { createProductCard } from '../shared/product-card.js';
+import { STORE_INFO, createStoreMapLink } from '../shared/store-info.js';
 
 const ICONS = ['▧', '◒', '◧', '✦', '◌', '♡'];
 
@@ -216,18 +217,26 @@ export function mountHomePage(container) {
         el('p', {
           text: 'Comercial Nova, tu tienda de productos cotidianos. Explora el catálogo y prepara tu compra desde casa.'
         }),
+        el('p', { text: STORE_INFO.direccion }),
+        el('p', { text: `Referencia: ${STORE_INFO.referencia}` }),
+        el('p', { text: `Horario de atención: ${STORE_INFO.horario}` }),
+        createStoreMapLink(),
+        el('br'),
         el('a', { className: 'button', href: '/productos', dataset: { nav: 'true' }, text: 'Explorar productos' })
       ),
       el(
         'figure',
         {},
-        el('img', {
-          src: '/assets/figma/map.svg',
-          alt: 'Ilustración referencial de la ubicación de una bodega',
+        el('iframe', {
+          src: STORE_INFO.mapaEmbedUrl,
+          title: 'Ubicación de la bodega en Ate, Lima',
+          className: 'store-map',
+          loading: 'lazy',
+          referrerpolicy: 'no-referrer-when-downgrade',
           width: '510',
           height: '220'
         }),
-        el('figcaption', { text: 'Mapa ilustrativo. Dirección y horarios por confirmar.' })
+        el('figcaption', {}, createStoreMapLink(undefined, 'Ver la ubicación compartida por la bodega'))
       )
     )
   );

@@ -2,6 +2,7 @@ import { el, clearElement } from './shared/dom.js';
 import { authStore } from './core/auth.store.js';
 import { cartStore } from './core/cart.store.js';
 import { catalogStore } from './core/catalog.store.js';
+import { STORE_INFO, createStoreMapLink } from './shared/store-info.js';
 import { navigateTo, handleCurrentRoute, setRouteChangeListener } from './router.js';
 
 /**
@@ -10,6 +11,13 @@ import { navigateTo, handleCurrentRoute, setRouteChangeListener } from './router
  * Equivalente exacto de `App` (`app.ts` / `app.html`).
  */
 function bootstrapApp() {
+  const storeContact = document.getElementById('store-contact');
+  storeContact.append(
+    el('span', { text: STORE_INFO.direccion }),
+    el('span', { text: `Referencia: ${STORE_INFO.referencia}` }),
+    el('span', { text: STORE_INFO.horario }),
+    createStoreMapLink()
+  );
   const topbar = document.getElementById('topbar');
   const mainNav = document.getElementById('main-nav');
   const navHome = document.getElementById('nav-home');

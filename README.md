@@ -37,6 +37,22 @@ Conversión completa del frontend Angular 22 de **Comercial Nova ("La Bodega")**
 
 ## 3. Estructura de carpetas
 
+### Ubicación y horario
+
+`js/shared/store-info.js` centraliza el enlace compartido por la bodega, el mapa y los datos confirmados: **Asociación de Vivienda La Planicie de la Era / Zona de La Era de Pando, Ate, Lima 15487**, con la referencia **Pista nueva-Santa Clara, al costado de Ceviche69**, con atención **lunes a sábado, de 8 a. m. a 8 p. m.** Se muestran en inicio y contacto, también en móvil. El mapa incrustado usa las coordenadas proporcionadas (-12.012667, -76.876944) y el enlace conserva el acceso original de Google Maps.
+
+El backend publica los datos de recojo y `mapaUrl` en `GET /api/tienda`. Se configuran en `configuracion-tienda.properties` o con `TIENDA_DIRECCION`, `TIENDA_HORARIO` y `TIENDA_MAPA_URL`; API y panel requieren reinicio. Si cambian los datos del comercio, actualizar también la información pública de `store-info.js`. Los pedidos anteriores conservan la dirección y el horario con los que se crearon. El modo de pago continúa en DEMO hasta configurar titular y número Yape reales.
+
+### Fotografías de productos
+
+Las 51 imágenes locales están en `assets/productos/`, en WebP de hasta 800 × 800 px (calidad 85). Los originales permanecen en `../Productos-img`. El componente compartido las muestra sobre fondo blanco, conserva las transparencias y ajusta la imagen completa sin recortarla en inicio, catálogo, detalle y carrito.
+
+`js/shared/product-images.data.js` asocia cada archivo con el **código comercial** del catálogo, sin depender de los IDs de base de datos. Para productos sin código, se requiere coincidencia exacta del nombre y marca normalizados. Si falta una fotografía o falla su carga, se conserva la ilustración de respaldo.
+
+Para regenerar las imágenes y el mapa con Pillow: `python tools/convert-product-images.py`. El script utiliza los originales y `../docs/revision-precios/catalogo-actualizado.csv`; el detalle de tamaños queda en `assets/productos/conversion.json`. Conversión inicial: 71 055 208 bytes → 2 777 330 bytes (96,09 % menos).
+
+Las fotos suministradas se consideran referenciales: por ejemplo, Cheetos está rotulado como 61 g en el archivo y como 50 g en el catálogo; las imágenes de Field y Chomp muestran un paquete individual aunque el catálogo vende sixpacks. No se modificaron nombres, presentaciones, precios ni existencias.
+
 ```text
 INTEGRADOR_FRONTEND/
 ├── index.html                  # Documento principal HTML5 semántico (shell SPA)

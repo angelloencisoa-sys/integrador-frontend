@@ -1,0 +1,365 @@
+{
+  "imagenes": 51,
+  "bytes_originales": 71055208,
+  "bytes_webp": 2777330,
+  "reduccion_porcentaje": 96.09,
+  "archivos": [
+    {
+      "codigo": "PROD-0001",
+      "original": "leche-gloria-azul-400g.jpg",
+      "archivo": "leche-gloria-azul-400g.webp",
+      "bytes_original": 1704283,
+      "bytes_webp": 44810
+    },
+    {
+      "codigo": "PROD-0002",
+      "original": "leche-gloria-roja-400g.jpg",
+      "archivo": "leche-gloria-roja-400g.webp",
+      "bytes_original": 1799809,
+      "bytes_webp": 55562
+    },
+    {
+      "codigo": "PROD-0003",
+      "original": "chorizo-braedt-500g.jpg",
+      "archivo": "chorizo-braedt-500g.webp",
+      "bytes_original": 2034748,
+      "bytes_webp": 63426
+    },
+    {
+      "codigo": "PROD-0004",
+      "original": "chorizo-san-fernando-unidad-40-g.png",
+      "archivo": "chorizo-san-fernando-unidad-40-g.webp",
+      "bytes_original": 1583311,
+      "bytes_webp": 62508
+    },
+    {
+      "codigo": "PROD-0005",
+      "original": "tuyo-costa-22g.jpg",
+      "archivo": "tuyo-costa-22g.webp",
+      "bytes_original": 1032650,
+      "bytes_webp": 26028
+    },
+    {
+      "codigo": "PROD-0006",
+      "original": "beso-de-moza.jpg",
+      "archivo": "beso-de-moza.webp",
+      "bytes_original": 1123214,
+      "bytes_webp": 19474
+    },
+    {
+      "codigo": "PROD-0007",
+      "original": "gaseosa-inca-kola-1.5l.jpg",
+      "archivo": "gaseosa-inca-kola-1.5l.webp",
+      "bytes_original": 1016122,
+      "bytes_webp": 20628
+    },
+    {
+      "codigo": "PROD-0008",
+      "original": "gaseosa-coca-cola-sin-azucar-500ml.jpeg",
+      "archivo": "gaseosa-coca-cola-sin-azucar-500ml.webp",
+      "bytes_original": 1665827,
+      "bytes_webp": 27462
+    },
+    {
+      "codigo": "PROD-0009",
+      "original": "galletas-gretel-32-g.png",
+      "archivo": "galletas-gretel-32-g.webp",
+      "bytes_original": 769840,
+      "bytes_webp": 57266
+    },
+    {
+      "codigo": "PROD-0010",
+      "original": "papas-lays-clasicas-36-g.png",
+      "archivo": "papas-lays-clasicas-36-g.webp",
+      "bytes_original": 1514268,
+      "bytes_webp": 58784
+    },
+    {
+      "codigo": "PROD-0011",
+      "original": "duraznos-dos-caballos-lata-820-g.png",
+      "archivo": "duraznos-dos-caballos-lata-820-g.webp",
+      "bytes_original": 1386329,
+      "bytes_webp": 107574
+    },
+    {
+      "codigo": "PROD-0012",
+      "original": "arroz-costeno-extra-750g.jpg",
+      "archivo": "arroz-costeno-extra-750g.webp",
+      "bytes_original": 1624546,
+      "bytes_webp": 55278
+    },
+    {
+      "codigo": "PROD-0013",
+      "original": "azucar-rubia-1-kg.png",
+      "archivo": "azucar-rubia-1-kg.webp",
+      "bytes_original": 1998966,
+      "bytes_webp": 85862
+    },
+    {
+      "codigo": "PROD-0014",
+      "original": "fideos-spaghetti-500-g.png",
+      "archivo": "fideos-spaghetti-500-g.webp",
+      "bytes_original": 1263884,
+      "bytes_webp": 28282
+    },
+    {
+      "codigo": "PROD-0015",
+      "original": "fideos-tallarin-500-g.png",
+      "archivo": "fideos-tallarin-500-g.webp",
+      "bytes_original": 1301335,
+      "bytes_webp": 33282
+    },
+    {
+      "codigo": "PROD-0016",
+      "original": "aceite-primor-900ml.jpg",
+      "archivo": "aceite-primor-900ml.webp",
+      "bytes_original": 960682,
+      "bytes_webp": 24134
+    },
+    {
+      "codigo": "PROD-0017",
+      "original": "aceite-vegetal-900-ml.png",
+      "archivo": "aceite-vegetal-900-ml.webp",
+      "bytes_original": 1300042,
+      "bytes_webp": 29814
+    },
+    {
+      "codigo": "PROD-0018",
+      "original": "sal-yodada-1-kg.png",
+      "archivo": "sal-yodada-1-kg.webp",
+      "bytes_original": 1544552,
+      "bytes_webp": 54632
+    },
+    {
+      "codigo": "PROD-0019",
+      "original": "harina-sin-preparar-1-kg.png",
+      "archivo": "harina-sin-preparar-1-kg.webp",
+      "bytes_original": 1711326,
+      "bytes_webp": 58116
+    },
+    {
+      "codigo": "PROD-0020",
+      "original": "avena-tradicional-500-g.png",
+      "archivo": "avena-tradicional-500-g.webp",
+      "bytes_original": 1834716,
+      "bytes_webp": 69930
+    },
+    {
+      "codigo": "PROD-0021",
+      "original": "leche-ideal-390g.jpg",
+      "archivo": "leche-ideal-390g.webp",
+      "bytes_original": 1600387,
+      "bytes_webp": 45340
+    },
+    {
+      "codigo": "PROD-0022",
+      "original": "yogur-fresa-946-g.png",
+      "archivo": "yogur-fresa-946-g.webp",
+      "bytes_original": 1259030,
+      "bytes_webp": 28102
+    },
+    {
+      "codigo": "PROD-0023",
+      "original": "queso-fresco-250-g.jpg",
+      "archivo": "queso-fresco-250-g.webp",
+      "bytes_original": 271433,
+      "bytes_webp": 51450
+    },
+    {
+      "codigo": "PROD-0024",
+      "original": "mantequilla-con-sal-180-g.png",
+      "archivo": "mantequilla-con-sal-180-g.webp",
+      "bytes_original": 1444237,
+      "bytes_webp": 51020
+    },
+    {
+      "codigo": "PROD-0025",
+      "original": "jamonada-de-pollo-san-fernando-paquete-200-g.png",
+      "archivo": "jamonada-de-pollo-san-fernando-paquete-200-g.webp",
+      "bytes_original": 1862525,
+      "bytes_webp": 96468
+    },
+    {
+      "codigo": "PROD-0026",
+      "original": "hot-dog-de-pollo-san-fernando-paquete-250-g.png",
+      "archivo": "hot-dog-de-pollo-san-fernando-paquete-250-g.webp",
+      "bytes_original": 1626178,
+      "bytes_webp": 64948
+    },
+    {
+      "codigo": "PROD-0027",
+      "original": "trozos-de-atun-florida-en-aceite-vegetal-lata-140-g.png",
+      "archivo": "trozos-de-atun-florida-en-aceite-vegetal-lata-140-g.webp",
+      "bytes_original": 1263932,
+      "bytes_webp": 73848
+    },
+    {
+      "codigo": "PROD-0029",
+      "original": "salsa-de-tomate-200-g.png",
+      "archivo": "salsa-de-tomate-200-g.webp",
+      "bytes_original": 1499616,
+      "bytes_webp": 102132
+    },
+    {
+      "codigo": "PROD-0030",
+      "original": "mayonesa-clasica-235-g.png",
+      "archivo": "mayonesa-clasica-235-g.webp",
+      "bytes_original": 1472143,
+      "bytes_webp": 53100
+    },
+    {
+      "codigo": "PROD-0031",
+      "original": "agua-sin-gas-750-ml..png",
+      "archivo": "agua-sin-gas-750-ml.webp",
+      "bytes_original": 1321526,
+      "bytes_webp": 32538
+    },
+    {
+      "codigo": "PROD-0032",
+      "original": "agua-sin-gas-1-l.png",
+      "archivo": "agua-sin-gas-1-l.webp",
+      "bytes_original": 1276299,
+      "bytes_webp": 27618
+    },
+    {
+      "codigo": "PROD-0033",
+      "original": "nectar-de-durazno-1-l.png",
+      "archivo": "nectar-de-durazno-1-l.webp",
+      "bytes_original": 741836,
+      "bytes_webp": 27748
+    },
+    {
+      "codigo": "PROD-0034",
+      "original": "bebida-rehidratante-500-ml.png",
+      "archivo": "bebida-rehidratante-500-ml.webp",
+      "bytes_original": 1890581,
+      "bytes_webp": 101758
+    },
+    {
+      "codigo": "PROD-0035",
+      "original": "gaseosa-pepsi-500-ml.jpg",
+      "archivo": "gaseosa-pepsi-500-ml.webp",
+      "bytes_original": 225503,
+      "bytes_webp": 44678
+    },
+    {
+      "codigo": "PROD-0036",
+      "original": "galletas-soda-field-sixpack-6-paquetes.png",
+      "archivo": "galletas-soda-field-sixpack-6-paquetes.webp",
+      "bytes_original": 1834033,
+      "bytes_webp": 63544
+    },
+    {
+      "codigo": "PROD-0037",
+      "original": "galletas-oreo-36g.jpg",
+      "archivo": "galletas-oreo-36g.webp",
+      "bytes_original": 1589594,
+      "bytes_webp": 40054
+    },
+    {
+      "codigo": "PROD-0038",
+      "original": "galletas-chomp-42-g.png",
+      "archivo": "galletas-chomp-42-g.webp",
+      "bytes_original": 1704001,
+      "bytes_webp": 87022
+    },
+    {
+      "codigo": "PROD-0039",
+      "original": "galletas-vainilla-field-sixpack-6-paquetes.png",
+      "archivo": "galletas-vainilla-field-sixpack-6-paquetes.webp",
+      "bytes_original": 1273699,
+      "bytes_webp": 37994
+    },
+    {
+      "codigo": "PROD-0040",
+      "original": "chizitos-35-g.jpg",
+      "archivo": "chizitos-35-g.webp",
+      "bytes_original": 297464,
+      "bytes_webp": 50996
+    },
+    {
+      "codigo": "PROD-0041",
+      "original": "cheetos-61-g.png",
+      "archivo": "cheetos-61-g.webp",
+      "bytes_original": 1591340,
+      "bytes_webp": 71006
+    },
+    {
+      "codigo": "PROD-0042",
+      "original": "chocolate-sublime-clasico-26-g.png",
+      "archivo": "chocolate-sublime-clasico-26-g.webp",
+      "bytes_original": 1465828,
+      "bytes_webp": 54042
+    },
+    {
+      "codigo": "PROD-0043",
+      "original": "gomitas-dulces-ambrosoli-bolsa-430-g..png",
+      "archivo": "gomitas-dulces-ambrosoli-bolsa-430-g.webp",
+      "bytes_original": 1668240,
+      "bytes_webp": 84200
+    },
+    {
+      "codigo": "PROD-0044",
+      "original": "chupetines-globo-pop-paquete-24-unidades.png",
+      "archivo": "chupetines-globo-pop-paquete-24-unidades.webp",
+      "bytes_original": 1848002,
+      "bytes_webp": 110320
+    },
+    {
+      "codigo": "PROD-0045",
+      "original": "detergente-en-polvo-ariel-con-downy-bolsa-800-g.png",
+      "archivo": "detergente-en-polvo-ariel-con-downy-bolsa-800-g.webp",
+      "bytes_original": 1513161,
+      "bytes_webp": 51830
+    },
+    {
+      "codigo": "PROD-0046",
+      "original": "lejia-clorox-tradicional-botella-1-l.png",
+      "archivo": "lejia-clorox-tradicional-botella-1-l.webp",
+      "bytes_original": 1277261,
+      "bytes_webp": 28712
+    },
+    {
+      "codigo": "PROD-0047",
+      "original": "lavavajilla-liquido-750-ml.png",
+      "archivo": "lavavajilla-liquido-750-ml.webp",
+      "bytes_original": 1227699,
+      "bytes_webp": 36808
+    },
+    {
+      "codigo": "PROD-0048",
+      "original": "nombre papel-higienico-elite-aloe-vera-doble-hoja-paquete-4-rollos.png",
+      "archivo": "papel-higienico-elite-aloe-vera-doble-hoja-paquete-4-rollos.webp",
+      "bytes_original": 1572780,
+      "bytes_webp": 46462
+    },
+    {
+      "codigo": "PROD-0049",
+      "original": "jabon-de-tocador-110-g.png",
+      "archivo": "jabon-de-tocador-110-g.webp",
+      "bytes_original": 1561314,
+      "bytes_webp": 61610
+    },
+    {
+      "codigo": "PROD-0050",
+      "original": "shampoo-limpieza-renovadora-sachet-18-ml.png",
+      "archivo": "shampoo-limpieza-renovadora-sachet-18-ml.webp",
+      "bytes_original": 1673605,
+      "bytes_webp": 77762
+    },
+    {
+      "codigo": "PROD-0051",
+      "original": "crema-dental-colgate-maxima-proteccion-anticaries-90-g.png",
+      "archivo": "crema-dental-colgate-maxima-proteccion-anticaries-90-g.webp",
+      "bytes_original": 670427,
+      "bytes_webp": 57074
+    },
+    {
+      "codigo": "PROD-0052",
+      "original": "trozos-de-atun-campomar-en-aceite-vegetal-lata-150-g.png",
+      "archivo": "trozos-de-atun-campomar-en-aceite-vegetal-lata-150-g.webp",
+      "bytes_original": 1361084,
+      "bytes_webp": 34294
+    }
+  ]
+}

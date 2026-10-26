@@ -5,6 +5,7 @@ import { authStore } from '../core/auth.store.js';
 import { cartStore } from '../core/cart.store.js';
 import { catalogStore } from '../core/catalog.store.js';
 import { ordersApi } from '../core/orders.api.js';
+import { createStoreMapLink } from '../shared/store-info.js';
 import { navigateTo } from '../router.js';
 
 function generateUUID() {
@@ -206,6 +207,7 @@ export function mountCheckoutPage(container) {
       leftPanel.append(
         el('p', { text: shop.direccion }),
         el('p', { text: shop.horario }),
+        createStoreMapLink(shop.mapaUrl),
         el('hr'),
         el('h2', { text: `3 · ${shop.demo ? 'Pago de demostración' : 'Pago con Yape'}` })
       );
@@ -214,7 +216,7 @@ export function mountCheckoutPage(container) {
         leftPanel.appendChild(
           el('p', {
             className: 'demo-banner',
-            text: 'MODO DEMOSTRACIÓN · No envíes dinero. Los datos de la tienda son referenciales. Podrás subir una imagen de prueba y simular su revisión.'
+            text: 'MODO DEMOSTRACIÓN · No envíes dinero. Los datos de pago son de prueba. Podrás subir una imagen de prueba y simular su revisión.'
           })
         );
       } else {

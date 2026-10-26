@@ -214,6 +214,14 @@
   height: auto;
 }
 
+.store-map {
+  display: block;
+  width: 100%;
+  height: 260px;
+  border: 0;
+  border-radius: 12px;
+}
+
 .store-section figure {
   margin: 0;
 }
@@ -284,7 +292,14 @@
   .secondary-action,
   .benefits,
   .store-section {
-    display: none;
+    display: block;
+    padding: 28px 0;
+  }
+  .store-grid {
+    grid-template-columns: 1fr;
+  }
+  .store-section h2 {
+    font-size: 25px;
   }
   .hero-mobile {
     display: block;

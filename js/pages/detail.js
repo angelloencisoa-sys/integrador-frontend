@@ -145,7 +145,7 @@ export function mountDetailPage(container, { params }) {
       { className: 'gallery' },
       galleryVisual,
       galleryTabs,
-      el('small', { className: 'art-caption', text: 'Ilustración referencial del producto.' })
+      el('small', { className: 'art-caption', text: 'Imagen referencial del producto.' })
     );
 
     // Detail copy
