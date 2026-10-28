@@ -43,6 +43,12 @@ Conversión completa del frontend Angular 22 de **Comercial Nova ("La Bodega")**
 
 El backend publica los datos de recojo y `mapaUrl` en `GET /api/tienda`. Se configuran en `configuracion-tienda.properties` o con `TIENDA_DIRECCION`, `TIENDA_HORARIO` y `TIENDA_MAPA_URL`; API y panel requieren reinicio. Si cambian los datos del comercio, actualizar también la información pública de `store-info.js`. Los pedidos anteriores conservan la dirección y el horario con los que se crearon. El modo de pago continúa en DEMO hasta configurar titular y número Yape reales.
 
+### Checkout y pago con QR
+
+El checkout separa contacto, recojo y pago en tarjetas; el resumen incluye fotografías, cantidades y precios. Al confirmar el pedido se muestra un único QR para Yape o Plin, el total y el titular **Jorge Reyes**. Mientras no se entregue el archivo, aparece «QR pendiente de incorporar». Para incorporarlo, guardar la imagen en `assets/` y definir su ruta en `PAYMENT_INFO.qrSrc`, en `js/shared/purchase-ui.js`. El QR de pago es independiente del QR autenticado de recojo que se genera después de aprobar el pago.
+
+La tienda usa textos comerciales sin etiquetas de demostración. La simulación permanece activa internamente en el backend (`TIENDA_DEMO=true`), con revisión manual del comprobante y sus registros de auditoría originales. Los eventos internos de simulación se presentan con mensajes comerciales en la tienda; no se modifica su contenido almacenado. Los pedidos anteriores conservan sus datos; los nuevos toman el titular configurado en el backend.
+
 ### Fotografías de productos
 
 Las 51 imágenes locales están en `assets/productos/`, en WebP de hasta 800 × 800 px (calidad 85). Los originales permanecen en `../Productos-img`. El componente compartido las muestra sobre fondo blanco, conserva las transparencias y ajusta la imagen completa sin recortarla en inicio, catálogo, detalle y carrito.

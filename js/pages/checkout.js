@@ -1,5 +1,4 @@
 import { el, clearElement } from '../shared/dom.js';
-import { formatMoney } from '../shared/format.js';
 import { CONFIG } from '../config.js';
 import { authStore } from '../core/auth.store.js';
 import { cartStore } from '../core/cart.store.js';
@@ -7,6 +6,7 @@ import { catalogStore } from '../core/catalog.store.js';
 import { ordersApi } from '../core/orders.api.js';
 import { createStoreMapLink } from '../shared/store-info.js';
 import { navigateTo } from '../router.js';
+import { createCheckoutStep, createPaymentMethods, createPurchaseSummary } from '../shared/purchase-ui.js';
 
 function generateUUID() {
   if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
@@ -34,7 +34,7 @@ export function mountCheckoutPage(container) {
   let pending = false;
   let errorText = '';
 
-  const page = el('div', { className: 'container order-page' });
+  const page = el('div', { className: 'container order-page checkout-review' });
   container.appendChild(page);
 
   async function loadShop() {
@@ -126,7 +126,7 @@ export function mountCheckoutPage(container) {
           text: 'CARRITO / CONFIRMAR PEDIDO'
         }),
         el('h1', { text: 'Revisa tu compra' }),
-        el('p', { text: 'Reserva tus productos y recógelos en la tienda.' })
+        el('p', { text: 'Confirma tus datos y continúa al pago para recoger tu pedido en la bodega.' })
       )
     );
 
@@ -186,102 +186,46 @@ export function mountCheckoutPage(container) {
     }
 
     const user = authStore.user;
-    const leftPanel = el(
-      'section',
-      { className: 'panel' },
-      el('h2', { text: '1 · Datos de contacto' }),
-      el(
-        'p',
-        {},
-        el('strong', { text: user?.nombreCompleto || '' }),
-        el('br'),
-        user?.email || '',
-        el('br'),
-        user?.telefono || ''
-      ),
-      el('hr'),
-      el('h2', { text: '2 · Recojo en tienda' })
-    );
-
-    if (shop) {
-      leftPanel.append(
-        el('p', { text: shop.direccion }),
-        el('p', { text: shop.horario }),
-        createStoreMapLink(shop.mapaUrl),
-        el('hr'),
-        el('h2', { text: `3 · ${shop.demo ? 'Pago de demostración' : 'Pago con Yape'}` })
-      );
-
-      if (shop.demo) {
-        leftPanel.appendChild(
-          el('p', {
-            className: 'demo-banner',
-            text: 'MODO DEMOSTRACIÓN · No envíes dinero. Los datos de pago son de prueba. Podrás subir una imagen de prueba y simular su revisión.'
-          })
-        );
-      } else {
-        leftPanel.appendChild(
-          el('p', {
-            text: 'Después de crear el pedido verás los datos de Yape. El personal verificará el abono antes de preparar tu compra.'
-          })
-        );
-      }
-
-      leftPanel.appendChild(
-        el('p', {
-          text: 'Dispones de 10 minutos para adjuntar el comprobante. Los productos quedan reservados al confirmar el pedido. Una vez enviado el comprobante, la reserva se conserva durante la revisión.'
-        })
-      );
-    } else {
-      leftPanel.appendChild(el('p', { role: 'status', text: 'Cargando datos de tienda…' }));
+    const contactFields = el('dl', { className: 'checkout-contact' });
+    for (const [label, value] of [
+      ['Nombre', user?.nombreCompleto], ['Correo electrónico', user?.email], ['Teléfono', user?.telefono]
+    ]) {
+      contactFields.append(el('div', {}, el('dt', { text: label }), el('dd', { text: value || 'No registrado' })));
     }
-
-    leftPanel.appendChild(
-      el('a', {
-        className: 'text-button',
-        href: '/carrito',
-        dataset: { nav: 'true' },
-        text: '← Modificar mi carrito'
-      })
-    );
-
-    const summary = el('aside', { className: 'summary panel' }, el('h2', { text: 'Tu compra' }));
-
-    lines.forEach(line => {
-      const lineTotal = Math.round(Number(line.producto.precioVenta) * 100) * line.cantidad / 100;
-      summary.appendChild(
-        el(
-          'div',
-          { className: 'summary-row' },
-          el('span', { text: `${line.cantidad} × ${line.producto.nombre}` }),
-          el('span', { text: formatMoney(lineTotal) })
-        )
-      );
-    });
-
-    const submitLabel = pending
-      ? 'Creando pedido…'
-      : shop?.demo
-        ? 'Crear pedido de prueba'
-        : 'Confirmar y continuar a Yape';
-
+    const contact = createCheckoutStep('01', 'Datos de contacto', 'Usaremos estos datos para coordinar tu pedido.', contactFields);
+    const pickup = createCheckoutStep('02', 'Recojo en tienda', 'Recoge tu compra cuando te indiquemos que está lista.');
+    if (shop) {
+      const [address, ...reference] = String(shop.direccion || '').split(/\.\s*Referencia:\s*/i);
+      const mapLink = createStoreMapLink(shop.mapaUrl);
+      mapLink.classList.add('checkout-map-link');
+      pickup.append(
+        el('div', { className: 'checkout-address' },
+          el('span', { className: 'checkout-field-label', text: 'Dirección de la bodega' }),
+          el('p', { text: address }),
+          reference.length ? el('p', { className: 'checkout-reference', text: `Referencia: ${reference.join('. Referencia: ')}` }) : null),
+        el('div', { className: 'checkout-pickup-footer' },
+          el('div', {}, el('span', { className: 'checkout-field-label', text: 'Horario de atención' }),
+            el('p', { text: shop.horario })), mapLink));
+    } else {
+      pickup.append(el('p', { role: 'status', text: 'Cargando datos de recojo…' }));
+    }
+    const payment = createCheckoutStep('03', 'Pago con QR', 'Yape o Plin, elige la aplicación que prefieras.',
+      createPaymentMethods(),
+      el('p', { className: 'checkout-payment-note', text: 'Después de confirmar tu pedido verás el QR y podrás adjuntar tu comprobante. El personal revisará el pago antes de preparar tu compra.' }));
+    const leftPanel = el('div', { className: 'checkout-sections' }, contact, pickup, payment,
+      el('a', { className: 'text-button checkout-edit-cart', href: '/carrito', dataset: { nav: 'true' }, text: '← Modificar mi carrito' }));
+    const summary = createPurchaseSummary(lines.map(line => ({
+      producto: line.producto, nombre: line.producto.nombre, cantidad: line.cantidad, precio: line.producto.precioVenta
+    })), cartStore.total);
     summary.append(
-      el('hr'),
-      el(
-        'div',
-        { className: 'summary-row total' },
-        el('strong', { text: 'Total' }),
-        el('strong', { text: formatMoney(cartStore.total) })
-      ),
-      el('p', { text: 'Recojo en tienda · sin costo adicional' }),
       el('button', {
-        type: 'button',
-        className: 'button button-orange',
-        disabled: pending || !shop,
-        text: submitLabel,
-        onClick: submitOrder
-      })
-    );
+        type: 'button', className: 'button button-orange', disabled: pending || !shop,
+        text: pending ? 'Confirmando pedido…' : 'Confirmar pedido', onClick: submitOrder
+      }),
+      el('p', { className: 'purchase-next-step', text: 'Siguiente paso: pagar con Yape o Plin' }),
+      el('div', { className: 'checkout-reservation' },
+        el('strong', { text: 'Tus productos quedan reservados' }),
+        el('p', { text: 'Tienes 10 minutos desde la confirmación para adjuntar el comprobante. Durante la revisión, tu reserva se mantiene.' })));
 
     page.appendChild(el('div', { className: 'purchase-layout' }, leftPanel, summary));
   }

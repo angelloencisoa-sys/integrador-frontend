@@ -74,9 +74,6 @@ export function mountOrdersPage(container) {
         el('h2', { text: order.numero }),
         el('span', { className: 'status-pill', text: orderStatus[order.estado] || order.estado })
       );
-      if (order.demo) {
-        leftCol.append(' ', el('span', { className: 'demo-label', text: 'DEMO' }));
-      }
 
       const rightCol = el(
         'div',

@@ -5,6 +5,7 @@ import { ordersApi, orderStatus } from '../core/orders.api.js';
 import { cartStore } from '../core/cart.store.js';
 import { catalogStore } from '../core/catalog.store.js';
 import { createStoreMapLink } from '../shared/store-info.js';
+import { PAYMENT_INFO, createPaymentMethods, createPaymentQr, createPurchaseSummary, publicOrderEvent } from '../shared/purchase-ui.js';
 
 /**
  * Renderiza el detalle, seguimiento en vivo (polling cada 5 s), subida de comprobante,
@@ -35,7 +36,7 @@ export function mountOrderDetailPage(container, { params }) {
   let submitReceiptBtn = null;
   let fileName = null;
 
-  const page = el('div', { className: 'container order-page' });
+  const page = el('div', { className: 'container order-page order-payment-page' });
   container.appendChild(page);
 
   function revokeQrUrl() {
@@ -187,49 +188,33 @@ export function mountOrderDetailPage(container, { params }) {
       el(
         'header',
         { className: 'page-heading' },
-        el('h1', { text: orderStatus[p.estado] || p.estado }),
+        el('span', { className: 'eyebrow', text: 'TU PEDIDO' }),
+        el('h1', { text: p.estado === 'PENDIENTE_PAGO' ? 'Completa tu pago' : orderStatus[p.estado] || p.estado }),
         el('p', { text: `${p.numero} · ${formatDateTime(p.creado, false)}` })
       )
     );
 
-    if (p.demo) {
-      page.appendChild(
-        el('p', {
-          className: 'demo-banner',
-          text: 'DEMOSTRACIÓN · No realices transferencias. Este pedido, el pago y los datos de recojo son de prueba.'
-        })
-      );
-    }
-
-    const leftPanel = el('section', { className: 'panel' });
+    const leftPanel = el('section', { className: 'panel payment-panel' });
 
     if (p.estado === 'PENDIENTE_PAGO') {
+      const holder = p.titular && !/demo|demostraci/i.test(p.titular) ? p.titular : PAYMENT_INFO.titular;
       leftPanel.append(
-        el('h2', { text: p.demo ? 'Prueba el envío de comprobante' : 'Paga con Yape' }),
-        el('p', {
-          text: `Reserva hasta ${formatDateTime(p.vence, true)}. Si el plazo terminó, cancela y crea otro pedido.`
-        })
+        el('div', { className: 'payment-panel-heading' },
+          el('span', { className: 'status-pill', text: 'Pedido confirmado' }),
+          el('h2', { text: 'Paga con Yape o Plin' }),
+          el('p', { text: 'Un único QR para pagar desde tu aplicación preferida.' })),
+        el('div', { className: 'payment-instructions' },
+          createPaymentQr(),
+          el('div', { className: 'payment-destination' }, createPaymentMethods(),
+            el('span', { className: 'checkout-field-label', text: 'Titular de la cuenta' }),
+            el('strong', { className: 'payment-holder', text: holder }),
+            el('span', { className: 'checkout-field-label', text: 'Importe exacto' }),
+            el('strong', { className: 'payment-amount', text: formatMoney(p.total) }),
+            el('p', { text: 'Verifica el titular y el importe antes de pagar. Luego adjunta tu comprobante para que podamos revisarlo.' }))),
+        el('p', { className: 'payment-deadline', text: `Productos reservados hasta ${formatDateTime(p.vence, true)}. Si el plazo terminó, cancela y crea otro pedido. Si ya pagaste, contacta a la bodega antes de volver a pagar.` }),
+        el('div', { className: 'receipt-heading' }, el('h2', { text: 'Adjunta tu comprobante' }),
+          el('p', { text: 'Envía la captura del pago y su número de operación.' }))
       );
-
-      if (!p.demo) {
-        leftPanel.append(
-          el('p', { className: 'yape-number', text: p.telefonoYape }),
-          el('p', {}, 'Titular: ', el('strong', { text: p.titular })),
-          el(
-            'p',
-            {},
-            'Verifica el destinatario y transfiere exactamente ',
-            el('strong', { text: formatMoney(p.total) }),
-            '. Si ya pagaste y el plazo terminó, contacta a la tienda; no pagues de nuevo.'
-          )
-        );
-      } else {
-        leftPanel.appendChild(
-          el('p', {
-            text: 'Adjunta una imagen PNG o JPEG de prueba. Referencia sugerida: DEMO-001. El personal simulará la aprobación desde JavaFX.'
-          })
-        );
-      }
 
       if (!receiptForm) {
         fileInput = el('input', {
@@ -256,7 +241,7 @@ export function mountOrderDetailPage(container, { params }) {
           minlength: '3',
           maxlength: '100',
           required: true,
-          placeholder: 'Ej.: DEMO-001',
+          placeholder: 'Escribe el número de operación',
           onInput: e => {
             operacion = e.target.value;
             submitReceiptBtn.disabled = !selectedFile || operacion.trim().length < 3 || pending;
@@ -271,7 +256,7 @@ export function mountOrderDetailPage(container, { params }) {
           fileName,
           el('label', {
             for: 'operation',
-            text: p.demo ? 'Referencia de prueba' : 'Número de operación del comprobante'
+            text: 'Número de operación del comprobante'
           }),
           operationInput,
           submitReceiptBtn
@@ -300,9 +285,7 @@ export function mountOrderDetailPage(container, { params }) {
       leftPanel.append(
         el('h2', { text: 'Recibimos tu comprobante' }),
         el('p', {
-          text: `El personal revisará ${
-            p.demo ? 'la simulación' : 'el abono en la cuenta de la tienda'
-          }. Tus productos siguen reservados. Esta página se actualiza automáticamente.`
+          text: 'El personal revisará tu comprobante y el abono en la cuenta de la bodega. Tus productos siguen reservados. Esta página se actualiza automáticamente.'
         })
       );
     }
@@ -357,7 +340,7 @@ export function mountOrderDetailPage(container, { params }) {
           'li',
           {},
           el('strong', { text: orderStatus[ev.estado] || ev.estado }),
-          el('p', { text: ev.mensaje }),
+          el('p', { text: publicOrderEvent(ev, p.demo) }),
           el('small', { text: formatDateTime(ev.fecha, false) })
         )
       );
@@ -365,29 +348,11 @@ export function mountOrderDetailPage(container, { params }) {
 
     leftPanel.append(el('h2', { className: 'history-title', text: 'Seguimiento' }), historyList);
 
-    const summary = el('aside', { className: 'summary panel' }, el('h2', { text: 'Tu pedido' }));
-    (p.lineas || []).forEach(l => {
-      const lineTotal = Math.round(Number(l.precio) * 100) * l.cantidad / 100;
-      summary.appendChild(
-        el(
-          'div',
-          { className: 'summary-row' },
-          el('span', { text: `${l.cantidad} × ${l.nombre}` }),
-          el('span', { text: formatMoney(lineTotal) })
-        )
-      );
-    });
-
-    summary.append(
-      el('hr'),
-      el(
-        'div',
-        { className: 'summary-row total' },
-        el('strong', { text: 'Total' }),
-        el('strong', { text: formatMoney(p.total) })
-      ),
-      el('p', { text: 'Recojo en tienda · sin costo adicional' })
-    );
+    const summary = createPurchaseSummary((p.lineas || []).map(line => ({
+      producto: catalogStore.products.find(product => product.id === line.productoId),
+      nombre: line.nombre, cantidad: line.cantidad, precio: line.precio
+    })), p.total, 'Resumen de tu pedido', p.estado === 'PENDIENTE_PAGO' ? 'Total a pagar' : 'Total del pedido');
+    summary.append(el('p', { className: 'purchase-next-step', text: 'Recojo en tienda · sin costo adicional' }));
 
     page.appendChild(el('div', { className: 'purchase-layout' }, leftPanel, summary));
 
